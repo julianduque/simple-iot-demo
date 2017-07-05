@@ -1,0 +1,21 @@
+{
+  "name": "simple-iot-agent",
+  "version": "1.0.0",
+  "description": "A simple IoT demo (agent)",
+  "main": "index.js",
+  "author": "Julian Duque <julianduquej@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard"
+  },
+  "dependencies": {
+    "debug": "^2.6.8",
+    "defaults": "^1.0.3",
+    "mqtt": "^2.9.0",
+    "pkg-dir": "^2.0.0",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
+}

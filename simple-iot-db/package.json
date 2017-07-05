@@ -1,0 +1,18 @@
+{
+  "name": "simple-iot-db",
+  "version": "1.0.0",
+  "description": "A simple IoT demo (db)",
+  "main": "index.js",
+  "author": "Julian Duque <julianduquej@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "standard"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "mongoose": "^4.11.1"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
+}

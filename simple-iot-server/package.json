@@ -1,0 +1,23 @@
+{
+  "name": "simple-iot-server",
+  "version": "1.0.0",
+  "description": "A simple IoT demo (server)",
+  "main": "server.js",
+  "scripts": {
+    "start": "DEBUG=iot* node server.js",
+    "linklocal": "linklocal",
+    "lint": "standard"
+  },
+  "author": "Julian Duque <julianduquej@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "simple-iot-db": "file:../simple-iot-db/",
+    "debug": "^2.6.8",
+    "mosca": "^2.5.1",
+    "redis": "^2.7.1"
+  },
+  "devDependencies": {
+    "linklocal": "^2.8.0",
+    "standard": "^10.0.2"
+  }
+}
