@@ -7,8 +7,8 @@ const EventEmitter = require('events')
 const express = require('express')
 const sio = require('socket.io')
 const mqtt = require('mqtt')
-const agent = require('simple-iot-agent')
 const asyncify = require('express-asyncify')
+const createAgent = require('simple-iot-agent')
 
 const pkg = require('./package')
 const api = require('./api')
@@ -39,5 +39,9 @@ io.on('connection', (socket) => {
 
 server.listen(port, () => {
   console.log(`Web server listening on port ${port}`)
-  agent({ name: pkg.name })
+
+  const agent = createAgent({ name: pkg.name })
+
+  agent.start()
+  agent.on('connected', (id) => console.log(`Connected ${id}`))
 })

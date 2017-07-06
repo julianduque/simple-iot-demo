@@ -5,6 +5,7 @@ const os = require('os')
 const mqtt = require('mqtt')
 const defaults = require('defaults')
 const uuid = require('uuid')
+const EventEmitter = require('events')
 
 const options = {
   name: 'untitled',
@@ -12,28 +13,42 @@ const options = {
   mqtt: { host: 'mqtt://localhost' }
 }
 
-function agent (opts) {
-  opts = defaults(opts, options)
+class IotAgent extends EventEmitter {
+  constructor (opts) {
+    super()
 
-  const client = mqtt.connect(opts.mqtt.host)
+    this.options = defaults(opts, options)
+  }
 
-  client.on('connect', () => {
-    const agentId = uuid.v4()
+  start () {
+    const opts = this.options
+    const client = mqtt.connect(opts.mqtt.host)
 
-    setInterval(async () => {
-      let message = {
-        agent: {
-          uuid: agentId,
-          name: opts.name,
-          hostname: os.hostname() || 'localhost',
-          pid: process.pid
-        },
-        value: process.memoryUsage()
-      }
-      debug('Sending', message)
-      client.publish('agent/message', JSON.stringify(message))
-    }, opts.interval)
-  })
+    client.on('connect', () => {
+      const agentId = uuid.v4()
+
+      this.emit('connected', agentId)
+
+      setInterval(async () => {
+        let message = {
+          agent: {
+            uuid: agentId,
+            name: opts.name,
+            hostname: os.hostname() || 'localhost',
+            pid: process.pid
+          },
+          value: process.memoryUsage()
+        }
+
+        debug('Sending', message)
+
+        client.publish('agent/message', JSON.stringify(message))
+        this.emit('message', message)
+      }, opts.interval)
+    })
+  }
 }
 
-module.exports = agent
+module.exports = function createAgent (opts) {
+  return new IotAgent(opts)
+}
