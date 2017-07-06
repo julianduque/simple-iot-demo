@@ -16,14 +16,14 @@ const options = {
 }
 
 class IotAgent extends EventEmitter {
-  constructor(opts) {
+  constructor (opts) {
     super()
 
     this.options = defaults(opts, options)
     this.started = false
   }
 
-  start() {
+  start () {
     if (!this.started) {
       const opts = this.options
       const client = mqtt.connect(opts.mqtt.host)
@@ -59,6 +59,6 @@ class IotAgent extends EventEmitter {
   }
 }
 
-module.exports = function createAgent(opts) {
+module.exports = function createAgent (opts) {
   return new IotAgent(opts)
 }
