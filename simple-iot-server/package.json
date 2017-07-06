@@ -4,7 +4,8 @@
   "description": "A simple IoT demo (server)",
   "main": "server.js",
   "scripts": {
-    "start": "DEBUG=iot* node server.js",
+    "start": "node server.js",
+    "start-dev": "DEBUG=iot* nodemon server.js",
     "linklocal": "linklocal",
     "lint": "standard"
   },
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "linklocal": "^2.8.0",
+    "nodemon": "^1.11.0",
     "standard": "^10.0.2"
   }
 }

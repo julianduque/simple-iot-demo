@@ -67,7 +67,7 @@ server.on('published', async (packet, client) => {
         }
 
         // Add a value to the Agent
-        agent.values.push({ memory: payload.value, timestamp: new Date() })
+        agent.values.push({ memory: payload.value, timestamp: payload.timestamp })
 
         // Set it as connected
         agent.connected = true

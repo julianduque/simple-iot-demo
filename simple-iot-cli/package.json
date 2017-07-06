@@ -1,0 +1,20 @@
+{
+  "name": "simple-iot-cli",
+  "version": "1.0.0",
+  "description": "A simple IoT demo (cli)",
+  "bin": "iot-dashboard.js",
+  "scripts": {
+    "lint": "standard"
+  },
+  "author": "Julian Duque <julianduquej@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.7.5",
+    "moment": "^2.18.1",
+    "mqtt": "^2.9.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
+  }
+}
