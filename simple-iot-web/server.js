@@ -2,11 +2,7 @@
 
 const debug = require('debug')('iot:web')
 const http = require('http')
-const path = require('path')
-const EventEmitter = require('events')
 const express = require('express')
-const sio = require('socket.io')
-const mqtt = require('mqtt')
 const asyncify = require('express-asyncify')
 const createAgent = require('simple-iot-agent')
 
@@ -14,12 +10,9 @@ const pkg = require('./package')
 const api = require('./api')
 
 const port = process.env.PORT || 3000
-const events = new EventEmitter()
 const app = asyncify(express())
 const server = http.createServer(app)
-const io = sio(server)
 
-app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api', api)
 
 // Express Error Handler
@@ -31,10 +24,6 @@ app.use((err, req, res, next) => {
   }
 
   res.status(500).send({ error: err.message })
-})
-
-io.on('connection', (socket) => {
-  debug(`WS Connected ${socket.id}`)
 })
 
 server.listen(port, () => {

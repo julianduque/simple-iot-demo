@@ -15,10 +15,8 @@
     "debug": "^2.6.8",
     "express": "^4.15.3",
     "express-asyncify": "^1.0.0",
-    "mqtt": "^2.9.0",
     "simple-iot-agent": "file:../simple-iot-agent/",
-    "simple-iot-db": "file:../simple-iot-db/",
-    "socket.io": "^2.0.3"
+    "simple-iot-db": "file:../simple-iot-db/"
   },
   "devDependencies": {
     "linklocal": "^2.8.0",
