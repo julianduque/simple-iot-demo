@@ -25,10 +25,10 @@ const table = grid.set(0, 0, 1, 4, contrib.table, {
   interactive: false,
   fg: 'white',
   label: 'IoT Dashboard',
-  columnWidth: [20, 12, 12, 12, 12]
+  columnWidth: [20, 6, 20, 15, 15, 15]
 })
 
-const tableHeaders = ['Name', 'PID', 'Heap Total', 'Heap Used', 'RSS']
+const tableHeaders = ['Name', 'PID', 'Hostname', 'Heap Total (Kb)', 'Heap Used (Kb)', 'RSS (Kb)']
 table.setData({ headers: tableHeaders, data: [] })
 
 // Create Agents Tree
@@ -79,6 +79,7 @@ function handleAgentMessage (payload) {
   const data = [
     payload.agent.name,
     payload.agent.pid,
+    payload.agent.hostname,
     Math.floor(payload.value.heapTotal / 1024),
     Math.floor(payload.value.heapUsed / 1024),
     Math.floor(payload.value.rss / 1024)
