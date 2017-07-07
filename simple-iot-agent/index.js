@@ -34,7 +34,7 @@ class IotAgent extends EventEmitter {
 
         this.emit('connected', agentId)
 
-        setInterval(async() => {
+        setInterval(() => {
           let message = {
             agent: {
               uuid: agentId,
