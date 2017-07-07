@@ -79,7 +79,7 @@ function handleAgentMessage (payload) {
   const data = [
     payload.agent.name,
     payload.agent.pid,
-    payload.agent.hostname,
+    payload.agent.hostname.substring(0, 15),
     Math.floor(payload.value.heapTotal / 1024),
     Math.floor(payload.value.heapUsed / 1024),
     Math.floor(payload.value.rss / 1024)
